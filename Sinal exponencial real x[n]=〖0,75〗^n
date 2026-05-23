@@ -1,1 +1,17 @@
+import numpy as np           # importa biblioteca para operações matemáticas
+import matplotlib.pyplot as plt  # Importa biblioteca para geração de gráficos
+n = np.arange(-30, 31)       # define o intervalo de tempo discreto de -30 a 30
+A = 1                        # define o fator de ganho / amplitude inicial em n=0(editável)
+base = 0.75                  # define a base da exponencial conforme o enunciado(editável)
+x = A * (base)**n            # aplica a equação geral do sinal exponencial real x[n] = A * (base)^n
+plt.figure(figsize=(15, 5))  # configura a largura e altura da janela do gráfico
+plt.plot(n, x, 'bo')         # plota apenas os pontos isolados com círculos azuis.
+plt.title(f"Sinal Exponencial Real Gerado por Equação: x[n] = {A} * ({base})^n") # adiciona o título dinâmico com os termos da equação
+plt.xlabel("n")              # identifica o eixo horizontal (tempo discreto)
+plt.ylabel("x[n]")           # identifica o eixo vertical (amplitude do sinal resultante)
+plt.grid(True, linestyle='--') # desenha as linhas de grade tracejadas ao fundo
+plt.xlim([-30, 30])          # trava a visualização horizontal entre -30 e 30
+teto_grafico = max(x) if max(x) < 10 else 5.0 # define um limite de exibição seguro para que o decaimento em n > 0 continue visível
+plt.ylim([min(x) - 0.5, teto_grafico + 0.5]) # calcula os limites verticais ideais para a leitura do gráfico
+plt.show()                   # renderiza e exibe o gráfico finalizado na tela
 
