@@ -1,0 +1,18 @@
+import numpy as np           # Importa biblioteca para manipulação de vetores
+import matplotlib.pyplot as plt # Importa biblioteca para geração de gráficos
+
+n = np.arange(-30, 31)       # Define o intervalo de tempo discreto de -30 a 30
+delta = np.where(n == 0, 1, 0) # Retorna 1 apenas onde n for igual a 0, senão 0
+
+plt.figure(figsize=(10, 4))  # Configura a largura e altura da janela do gráfico
+plt.stem(n, delta, basefmt=" ") # Plota o sinal em formato de hastes discretas
+
+plt.title(r"Sinal de Amostra Unitária $\delta[n]$") # Adiciona o título principal
+plt.xlabel("n")              # Identifica o eixo horizontal (tempo discreto)
+plt.ylabel(r"$\delta[n]$")   # Identifica o eixo vertical (amplitude)
+plt.grid(True, linestyle='--') # Desenha as linhas de grade tracejadas ao fundo
+
+plt.xlim([-30, 30])          # Trava a visualização horizontal entre -30 e 30
+plt.ylim([-0.1, 1.1])        # Ajusta os limites verticais para destacar o ponto 1
+
+plt.show()                   # Renderiza e exibe o gráfico finalizado na tela
