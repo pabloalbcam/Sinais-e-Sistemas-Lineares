@@ -1,3 +1,4 @@
+Desenvolvimento do script em Python no Google Colab.
 import numpy as np           # importa biblioteca para operações matemáticas
 import matplotlib.pyplot as plt  # Importa biblioteca para geração de gráficos
 n = np.arange(-30, 31)       # define o intervalo de tempo discreto de -30 a 30
@@ -11,6 +12,5 @@ plt.xlabel("n")              # identifica o eixo horizontal (tempo discreto)
 plt.ylabel(f"{A}\u03B4[n - {n0}]") # identifica o eixo vertical (amplitude correspondente)
 plt.grid(True, linestyle='--') # desenha as linhas de grade tracejadas ao fundo
 plt.xlim([-30, 30])          # trava a visualização horizontal entre -30 e 30
-plt.ylim([min(0, A) - 0.5, max(0, A) + 0.5]) # calcula dinamicamente os limites verticais corretos para amplitudes positivas ou negativas
+plt.ylim([min(0, A) - 0.5, max(0, A) + 0.5]) # calcula os limites verticais corretos para amplitudes positivas ou negativas
 plt.show()                   # renderiza e exibe o gráfico finalizado na tela
-
