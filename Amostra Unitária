@@ -1,13 +1,16 @@
 import numpy as np           # importa biblioteca para operações matemáticas
 import matplotlib.pyplot as plt  # Importa biblioteca para geração de gráficos
 n = np.arange(-30, 31)       # define o intervalo de tempo discreto de -30 a 30
-delta = np.where(n == 0, 1, 0)  # retorna 1 onde n for igual a 0, senão 0
+n0 = 0                       # define em qual ponto 'n' a amostra unitária vai aparecer(editável)
+A = 1                     # define a amplitude (altura) que o sinal terá nesse ponto(editável)
+delta = np.where(n == n0, A, 0) # retorna a amplitude A onde n for igual a n0, senão 0
 plt.figure(figsize=(15, 5))  # configura a largura e altura da janela do gráfico
-plt.plot(n, delta, 'bo')     # plota apenas os pontos isolados com círculos azuis.
-plt.title(r"Sinal de Amostra Unitária $\delta[n]$")  # adiciona o título principal
+plt.plot(n, delta, 'bo')     # plota apenas os pontos isolados com círculos azuis
+plt.title(f"Sinal de Amostra Unitária Deslocado e Escalado: {A}\u03B4[n - {n0}]") # adiciona o título dinâmico com os valores de A e n0
 plt.xlabel("n")              # identifica o eixo horizontal (tempo discreto)
-plt.ylabel(r"$\delta[n]$")   # identifica o eixo vertical (amplitude)
+plt.ylabel(f"{A}\u03B4[n - {n0}]") # identifica o eixo vertical (amplitude correspondente)
 plt.grid(True, linestyle='--') # desenha as linhas de grade tracejadas ao fundo
 plt.xlim([-30, 30])          # trava a visualização horizontal entre -30 e 30
-plt.ylim([-0.1, 1.1])        # ajusta os limites verticais para destacar o ponto 1
+plt.ylim([min(0, A) - 0.5, max(0, A) + 0.5]) # calcula dinamicamente os limites verticais corretos para amplitudes positivas ou negativas
+plt.show()                   # renderiza e exibe o gráfico finalizado na tela
 
