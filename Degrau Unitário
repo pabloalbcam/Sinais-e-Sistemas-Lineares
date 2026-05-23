@@ -1,1 +1,15 @@
-
+import numpy as np           # importa biblioteca para operações matemáticas
+import matplotlib.pyplot as plt  # Importa biblioteca para geração de gráficos
+n = np.arange(-30, 31)       # define o intervalo de tempo discreto de -30 a 30
+n0 = 5                       # define a partir de qual ponto 'n' o degrau unitário vai iniciar(editável)
+A = 3                        # define a amplitude (altura) que o sinal terá a partir de n0(editável)
+degrau = np.where(n >= n0, A, 0) # retorna a amplitude A para todo n maior ou igual a n0, senão 0
+plt.figure(figsize=(15, 5))  # configura a largura e altura da janela do gráfico
+plt.plot(n, degrau, 'bo')    # plota apenas os pontos isolados com círculos azuis, sem qualquer haste vertical ou linha de base
+plt.title(f"Sinal de Degrau Unitário Deslocado e Escalado: {A}u[n - {n0}]") # adiciona o título dinâmico com os valores de A e n0
+plt.xlabel("n")              # identifica o eixo horizontal (tempo discreto)
+plt.ylabel(f"{A}u[n - {n0}]") # identifica o eixo vertical (amplitude correspondente)
+plt.grid(True, linestyle='--') # desenha as linhas de grade tracejadas ao fundo
+plt.xlim([-30, 30])          # trava a visualização horizontal entre -30 e 30
+plt.ylim([min(degrau) - 0.5, max(degrau) + 0.5]) # calcula dinamicamente os limites verticais corretos baseando-se nos valores reais do vetor
+plt.show()                   # renderiza e exibe o gráfico finalizado na tela
